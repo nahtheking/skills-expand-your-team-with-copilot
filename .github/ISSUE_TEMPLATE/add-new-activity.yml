@@ -1,0 +1,136 @@
+name: 🏃‍♂️ Add New Activity
+description: Request to add a new extracurricular activity to the system
+title: "[NEW ACTIVITY] Add activity: "
+labels: ["enhancement", "new-activity", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for requesting a new activity! Please fill out the form below with all the details needed to add your new extracurricular activity to the system.
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: What is the name of the new activity?
+      placeholder: e.g., "Advanced Chess Club", "Digital Photography Workshop"
+    validations:
+      required: true
+
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: Activity Description
+      description: Provide a detailed description of what students will do in this activity
+      placeholder: e.g., "Students will learn advanced chess strategies and participate in regional tournaments..."
+    validations:
+      required: true
+
+  - type: dropdown
+    id: activity-category
+    attributes:
+      label: Activity Category
+      description: What type of activity is this?
+      options:
+        - Academic (Math, Science, Debate, etc.)
+        - Arts (Music, Drama, Visual Arts, etc.)
+        - Sports (Athletic activities)
+        - Technology (Robotics, Programming, etc.)
+        - Community Service
+        - Other
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: schedule-days
+    attributes:
+      label: Schedule - Days of the Week
+      description: Which days will this activity meet? (Select all that apply)
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: start-time
+    attributes:
+      label: Start Time
+      description: What time does the activity start? (Use 24-hour format)
+      placeholder: e.g., "15:30" for 3:30 PM, "07:15" for 7:15 AM
+    validations:
+      required: true
+
+  - type: input
+    id: end-time
+    attributes:
+      label: End Time
+      description: What time does the activity end? (Use 24-hour format)
+      placeholder: e.g., "17:00" for 5:00 PM, "08:00" for 8:00 AM
+    validations:
+      required: true
+
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Participants
+      description: What is the maximum number of students that can participate?
+      placeholder: e.g., "15", "20", "25"
+    validations:
+      required: true
+
+  - type: input
+    id: teacher-in-charge
+    attributes:
+      label: Teacher/Staff in Charge
+      description: Who will be supervising this activity?
+      placeholder: e.g., "Ms. Rodriguez", "Mr. Chen"
+    validations:
+      required: true
+
+  - type: input
+    id: location
+    attributes:
+      label: Location/Room
+      description: Where will this activity take place?
+      placeholder: e.g., "Room 205", "Gymnasium", "Art Studio"
+
+  - type: textarea
+    id: special-requirements
+    attributes:
+      label: Special Requirements or Equipment
+      description: Are there any special requirements, equipment needs, or prerequisites for students?
+      placeholder: e.g., "Students must bring their own art supplies", "Basic programming knowledge helpful"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        The new activity should be added to the system with:
+        - ✅ Activity appears in the activities list on the website
+        - ✅ Students can view activity details and register
+        - ✅ Activity shows correct schedule and participant limits
+        - ✅ Teacher can manage student registrations for this activity
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Notes for Developer
+        **Database Changes Needed:**
+        - Add new activity entry to `initial_activities` in `src/backend/database.py`
+        - Include all schedule details in the correct format
+        - Set appropriate participant limits
+
+        **Files to Modify:**
+        - `src/backend/database.py` - Add activity to initial data
+        - Test the activity appears correctly in the UI
+        - Verify registration functionality works
+
+        **Testing:**
+        - Ensure activity displays on the main page
+        - Test student registration process
+        - Verify teacher can see registrations
