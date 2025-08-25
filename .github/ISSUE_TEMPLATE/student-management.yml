@@ -1,0 +1,144 @@
+name: 👥 Student Management Task
+description: Request help with managing student registrations or data
+title: "[STUDENT MGMT] "
+labels: ["enhancement", "student-management", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Need help with student registrations or managing student data? Please provide the details below.
+
+  - type: dropdown
+    id: task-type
+    attributes:
+      label: What type of student management task do you need?
+      description: Select the type of task you need help with
+      options:
+        - Register multiple students at once (bulk registration)
+        - Remove/unregister students from activities
+        - Transfer students between activities
+        - View student registration report
+        - Export student lists
+        - Update student information
+        - Check activity capacity/waitlists
+        - Other (explain below)
+    validations:
+      required: true
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: Which activity does this involve? (if applicable)
+      placeholder: e.g., "Chess Club", "Drama Club", "Math Club"
+
+  - type: textarea
+    id: student-emails
+    attributes:
+      label: Student Email Addresses
+      description: List the student email addresses involved (one per line)
+      placeholder: |
+        student1@mergington.edu
+        student2@mergington.edu
+        student3@mergington.edu
+
+  - type: textarea
+    id: task-description
+    attributes:
+      label: Task Description
+      description: Describe exactly what you need to do with these students
+      placeholder: e.g., "I need to register 5 new students for Chess Club", "I need to move 3 students from beginner to advanced Math Club"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this task?
+      options:
+        - Urgent - Needed today
+        - Soon - Needed this week
+        - Normal - Needed within 2 weeks
+        - Low - When convenient
+    validations:
+      required: true
+
+  - type: textarea
+    id: special-instructions
+    attributes:
+      label: Special Instructions
+      description: Any special requirements or considerations?
+      placeholder: e.g., "These students have special dietary requirements", "Student has scheduling conflict on Tuesdays"
+
+  - type: checkboxes
+    id: required-actions
+    attributes:
+      label: What actions are needed? (Select all that apply)
+      options:
+        - label: Add students to activity
+        - label: Remove students from activity
+        - label: Check if students are already registered
+        - label: Verify activity has capacity
+        - label: Send confirmation to students
+        - label: Update activity information
+        - label: Generate reports
+        - label: Other (explain in description)
+
+  - type: input
+    id: deadline
+    attributes:
+      label: Deadline
+      description: When do you need this completed by?
+      placeholder: e.g., "Before next Monday", "End of the week", "Before the semester starts"
+
+  - type: textarea
+    id: reason
+    attributes:
+      label: Reason for Changes
+      description: Why are these changes needed?
+      placeholder: e.g., "New students enrolled", "Schedule conflicts", "Activity moved to different room"
+
+  - type: textarea
+    id: teacher-contact
+    attributes:
+      label: Teacher Contact Information
+      description: How can we reach you if we have questions?
+      placeholder: e.g., "Email: teacher@mergington.edu, Office: Room 101, Available: Mon-Fri 8am-3pm"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        The student management task should be completed with:
+        - ✅ All specified students properly registered/unregistered
+        - ✅ Activity capacity limits respected
+        - ✅ Students receive appropriate confirmations
+        - ✅ Teacher can verify changes were made correctly
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Notes for Developer
+        **Data Validation Required:**
+        - Verify all student emails are valid Mergington addresses
+        - Check activity capacity before adding students
+        - Confirm students aren't already registered (for additions)
+        - Verify students are currently registered (for removals)
+
+        **Key Files to Modify:**
+        - `src/backend/database.py` - Update participant lists
+        - `src/backend/routers/activities.py` - May need bulk operations
+        - Consider adding bulk registration endpoints if not present
+
+        **Database Operations:**
+        - Update `participants` array in activity documents
+        - Validate email format and domain
+        - Handle capacity checking
+        - Maintain data consistency
+
+        **Testing:**
+        - Verify registrations appear correctly in UI
+        - Test capacity limits are enforced
+        - Check teacher can see updated participant lists
+        - Ensure students can see their registrations

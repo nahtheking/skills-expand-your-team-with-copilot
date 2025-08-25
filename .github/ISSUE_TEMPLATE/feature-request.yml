@@ -1,0 +1,153 @@
+name: 💡 Feature Request
+description: Request a new feature or improvement for the activities system
+title: "[FEATURE] "
+labels: ["enhancement", "feature-request", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for suggesting a new feature! Please describe what you'd like to see added or improved.
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: What type of feature are you requesting?
+      options:
+        - Student management (registration, tracking, etc.)
+        - Teacher tools (reporting, administration, etc.)
+        - Activity management (scheduling, capacity, etc.)
+        - Communication (notifications, announcements, etc.)
+        - Reporting (attendance, statistics, etc.)
+        - User interface improvements
+        - Mobile/accessibility improvements
+        - Other (explain below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: Feature Description
+      description: What would you like to see added or changed?
+      placeholder: e.g., "I'd like to be able to send email notifications to students when activities are cancelled"
+    validations:
+      required: true
+
+  - type: textarea
+    id: problem-solving
+    attributes:
+      label: Problem This Solves
+      description: What problem or difficulty would this feature address?
+      placeholder: e.g., "Currently, when we need to cancel an activity, I have to manually call or email each student individually"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: user-type
+    attributes:
+      label: Who Would Use This Feature?
+      description: Who would primarily benefit from this feature?
+      options:
+        - Teachers/Staff only
+        - Students only
+        - Both teachers and students
+        - School administrators
+        - Parents/Guardians
+    validations:
+      required: true
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: How Important Is This?
+      description: How much would this feature help you?
+      options:
+        - Critical - I can't do my job effectively without this
+        - High - This would save me significant time/effort
+        - Medium - This would be a nice improvement
+        - Low - This would be convenient but not essential
+    validations:
+      required: true
+
+  - type: textarea
+    id: current-workaround
+    attributes:
+      label: Current Workaround
+      description: How do you currently handle this task without the feature?
+      placeholder: e.g., "I keep a separate spreadsheet and manually send emails"
+
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed Solution
+      description: If you have ideas about how this feature should work, describe them here
+      placeholder: e.g., "Add a 'Send Notification' button on each activity page that lets me type a message and send it to all registered students"
+
+  - type: textarea
+    id: alternative-solutions
+    attributes:
+      label: Alternative Solutions
+      description: Are there other ways this problem could be solved?
+      placeholder: e.g., "Could also be solved by integrating with the school's existing email system"
+
+  - type: checkboxes
+    id: feature-components
+    attributes:
+      label: Feature Components
+      description: If applicable, what parts would this feature need? (Select all that apply)
+      options:
+        - label: New user interface elements (buttons, forms, etc.)
+        - label: Email/notification system
+        - label: Database changes
+        - label: New user permissions/roles
+        - label: Mobile-friendly design
+        - label: Integration with external systems
+        - label: Reporting/export capabilities
+        - label: Automated processes
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would help understand this request?
+      placeholder: e.g., "This is similar to how our other school system works", "I've seen this feature in other applications"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        The new feature should:
+        - ✅ Solve the described problem effectively
+        - ✅ Be intuitive and easy to use
+        - ✅ Work reliably without breaking existing functionality
+        - ✅ Be accessible to the intended users
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Notes for Developer
+        **Analysis Required:**
+        - Evaluate technical feasibility and complexity
+        - Consider impact on existing codebase
+        - Identify database schema changes needed
+        - Plan user interface modifications
+
+        **Key Considerations:**
+        - User authentication and permissions
+        - Data validation and error handling
+        - Mobile responsiveness
+        - Performance impact
+        - Security implications
+
+        **Files Likely to Change:**
+        - Frontend: `src/static/app.js`, `src/static/index.html`
+        - Backend: `src/backend/routers/` (new endpoints)
+        - Database: `src/backend/database.py` (schema updates)
+
+        **Testing Requirements:**
+        - Unit tests for new functionality
+        - Integration tests with existing features
+        - User experience testing
+        - Performance testing if applicable

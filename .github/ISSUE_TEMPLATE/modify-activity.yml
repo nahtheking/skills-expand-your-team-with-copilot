@@ -1,0 +1,150 @@
+name: ✏️ Modify Existing Activity
+description: Request changes to an existing extracurricular activity
+title: "[MODIFY ACTIVITY] Update activity: "
+labels: ["enhancement", "modify-activity", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for requesting changes to an existing activity! Please provide the details of what needs to be modified.
+
+  - type: dropdown
+    id: existing-activity
+    attributes:
+      label: Which Activity Needs Changes?
+      description: Select the activity you want to modify
+      options:
+        - Art Club
+        - Drama Club
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Science Olympiad
+        - Sunday Chess Tournament
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: other-activity-name
+    attributes:
+      label: Other Activity Name
+      description: If you selected "Other" above, please specify the activity name
+      placeholder: e.g., "Morning Fitness Club"
+
+  - type: checkboxes
+    id: changes-needed
+    attributes:
+      label: What Changes Are Needed?
+      description: Select all that apply
+      options:
+        - label: Change activity description
+        - label: Modify schedule (days/times)
+        - label: Update participant limit
+        - label: Change location/room
+        - label: Update teacher/supervisor
+        - label: Add special requirements
+        - label: Remove special requirements
+        - label: Other (explain below)
+
+  - type: textarea
+    id: new-description
+    attributes:
+      label: New Activity Description
+      description: If changing the description, provide the new description here
+      placeholder: Enter the updated description for the activity
+
+  - type: checkboxes
+    id: new-schedule-days
+    attributes:
+      label: New Schedule - Days of the Week
+      description: If changing schedule, select the new days (leave empty if not changing)
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+
+  - type: input
+    id: new-start-time
+    attributes:
+      label: New Start Time
+      description: If changing start time, enter new time (24-hour format)
+      placeholder: e.g., "15:30" for 3:30 PM
+
+  - type: input
+    id: new-end-time
+    attributes:
+      label: New End Time
+      description: If changing end time, enter new time (24-hour format)
+      placeholder: e.g., "17:00" for 5:00 PM
+
+  - type: input
+    id: new-max-participants
+    attributes:
+      label: New Maximum Participants
+      description: If changing participant limit, enter the new number
+      placeholder: e.g., "20", "25"
+
+  - type: input
+    id: new-teacher
+    attributes:
+      label: New Teacher/Staff in Charge
+      description: If changing supervisor, enter the new teacher's name
+      placeholder: e.g., "Ms. Rodriguez", "Mr. Chen"
+
+  - type: input
+    id: new-location
+    attributes:
+      label: New Location/Room
+      description: If changing location, enter the new location
+      placeholder: e.g., "Room 205", "Gymnasium"
+
+  - type: textarea
+    id: change-reason
+    attributes:
+      label: Reason for Changes
+      description: Please explain why these changes are needed
+      placeholder: e.g., "Room 101 is no longer available", "Need to accommodate more students"
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional-details
+    attributes:
+      label: Additional Details
+      description: Any other information that might be helpful for making these changes
+      placeholder: Any special considerations, timing requirements, etc.
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        The modified activity should:
+        - ✅ Display updated information on the website
+        - ✅ Maintain existing student registrations (unless specified otherwise)
+        - ✅ Function correctly with new schedule/limits
+        - ✅ Allow teachers to continue managing registrations
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Notes for Developer
+        **Database Changes Needed:**
+        - Update the specified activity in `initial_activities` in `src/backend/database.py`
+        - Modify only the fields that were requested to change
+        - Preserve existing participant data unless changes affect capacity
+
+        **Files to Modify:**
+        - `src/backend/database.py` - Update activity details
+        - Verify changes don't break existing functionality
+
+        **Testing:**
+        - Confirm updated details appear correctly
+        - Test that existing registrations are preserved
+        - Verify new limits/schedules work properly
+        - Check teacher management features still work

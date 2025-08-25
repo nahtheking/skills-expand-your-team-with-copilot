@@ -1,0 +1,145 @@
+name: 🐛 Bug Report
+description: Report a problem with the activities system
+title: "[BUG] "
+labels: ["bug", "teacher-request"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you for reporting a bug! Please provide details about the problem you're experiencing.
+
+  - type: dropdown
+    id: bug-area
+    attributes:
+      label: What part of the system has the problem?
+      description: Select the area where you're experiencing issues
+      options:
+        - Student registration for activities
+        - Teacher login
+        - Activity information display
+        - Student unregistration
+        - Activity filtering/search
+        - Website loading/performance
+        - Other (explain below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Problem Description
+      description: Describe what's happening that shouldn't be happening
+      placeholder: e.g., "When I try to unregister a student from Chess Club, I get an error message"
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: Expected Behavior
+      description: What should happen instead?
+      placeholder: e.g., "The student should be removed from the activity and I should see a success message"
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps-to-reproduce
+    attributes:
+      label: Steps to Reproduce
+      description: How can someone else see this problem?
+      placeholder: |
+        1. Go to the website
+        2. Click on 'Login' 
+        3. Enter username and password
+        4. Click on Chess Club
+        5. Try to unregister a student
+        6. See error message
+    validations:
+      required: true
+
+  - type: dropdown
+    id: frequency
+    attributes:
+      label: How often does this happen?
+      options:
+        - Always (every time I try)
+        - Usually (most of the time)
+        - Sometimes (inconsistent)
+        - Rarely (only happened once or twice)
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      description: What web browser are you using?
+      placeholder: e.g., "Chrome", "Firefox", "Safari", "Edge"
+
+  - type: input
+    id: device
+    attributes:
+      label: Device/Computer
+      description: What device are you using?
+      placeholder: e.g., "Windows laptop", "Mac computer", "iPad", "Android phone"
+
+  - type: textarea
+    id: error-message
+    attributes:
+      label: Error Message
+      description: If you see any error messages, please copy them here exactly
+      placeholder: Copy and paste any error messages you see
+
+  - type: input
+    id: student-email
+    attributes:
+      label: Student Email (if relevant)
+      description: If the problem involves a specific student, what's their email?
+      placeholder: e.g., "student@mergington.edu"
+
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name (if relevant)
+      description: If the problem involves a specific activity, which one?
+      placeholder: e.g., "Chess Club", "Drama Club"
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Information
+      description: Anything else that might help understand the problem?
+      placeholder: e.g., "This started happening after we added new students", "Works fine for other activities"
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        The bug should be fixed so that:
+        - ✅ The reported problem no longer occurs
+        - ✅ The expected behavior works correctly
+        - ✅ Similar problems are prevented
+        - ✅ No new problems are introduced
+
+  - type: markdown
+    attributes:
+      value: |
+        ## Implementation Notes for Developer
+        **Investigation Steps:**
+        1. Try to reproduce the bug using the provided steps
+        2. Check browser console for JavaScript errors
+        3. Check server logs for backend errors
+        4. Test with different browsers/devices if relevant
+
+        **Common Bug Areas:**
+        - Authentication issues: Check `src/backend/routers/auth.py`
+        - Registration problems: Check `src/backend/routers/activities.py`
+        - UI issues: Check `src/static/app.js` and `src/static/index.html`
+        - Database issues: Check `src/backend/database.py`
+
+        **Testing:**
+        - Verify the fix resolves the specific issue
+        - Test related functionality to ensure no regression
+        - Test with different user scenarios (student/teacher)
+        - Check error handling and user feedback
