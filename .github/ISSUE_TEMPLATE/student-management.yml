@@ -104,7 +104,7 @@ body:
     attributes:
       label: Teacher Contact Information
       description: How can we reach you if we have questions?
-      placeholder: e.g., "Email: teacher@mergington.edu, Office: Room 101, Available: Mon-Fri 8am-3pm"
+      placeholder: "e.g., Email: teacher@mergington.edu, Office: Room 101, Available: Mon-Fri 8am-3pm"
 
   - type: markdown
     attributes:
